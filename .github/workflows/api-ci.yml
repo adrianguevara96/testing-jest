@@ -7,7 +7,7 @@ on:
     paths:
       # - "./../../../platzi/api/**"
       - "./platzi/api/**"
-      - "./platzi/.github/workflows/api-ci.yml"
+      - ".github/workflows/api-ci.yml"
 # por default nuestro directorio de trabajo sera el folder api
 defaults:
   run:
