@@ -1,5 +1,5 @@
 # nombre
-name: Playwright Tests
+name: Testing
 #on: [push]
 # se hara push cuando haya algun cambio en los siguientes directorios
 on:
@@ -14,6 +14,29 @@ defaults:
     working-directory: ./platzi/api
 # lo que va a hacer github actions
 jobs:
+  linter:
+    # preparamos una maquina virtual con la ult version de ubuntu
+    runs-on: ubuntu-latest
+    # los pasos que tiene que seguir github actions
+    steps:
+      # clonar nuestro repositorio
+      - name: Checkout
+        uses: actions/checkout@v2
+      # instalar node con la version especificada
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+          # cache: 'npm'
+          # cache-dependency-path: ./platzi/api/package-lock.json
+      # instalar las dependencias en un CI, entorno de integracion continua
+      - name: install
+        shell: bash
+        run: npm ci
+      # correr las pruebas estaticas
+      - name: run linter
+        shell: bash
+        run: npm run lint
   unit-test:
     # preparamos una maquina virtual con la ult version de ubuntu
     runs-on: ubuntu-latest
@@ -33,7 +56,8 @@ jobs:
       - name: install
         shell: bash
         run: npm ci
-      # correr las pruebas
+      # correr las pruebas unitarias
       - name: run unit test
         shell: bash
         run: npm run test
+
