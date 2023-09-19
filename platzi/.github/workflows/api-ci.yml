@@ -5,8 +5,8 @@ name: Playwright Tests
 on:
   push:
     paths:
-      - "./platzi/api/**"
-      - "./platzi/github/workflows/api-ci.yml"
+      - "./../../../platzi/api/**"
+      - "./../../../platzi/.github/workflows/api-ci.yml"
 # por default nuestro directorio de trabajo sera el folder api
 defaults:
   run:
