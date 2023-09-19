@@ -1,0 +1,38 @@
+# nombre
+name: Playwright Tests
+#on: [push]
+# se hara push cuando haya algun cambio en los siguientes directorios
+on:
+  push:
+    paths:
+      - "./api/**"
+      - ".github/workflows/api-ci.yml"
+# por default nuestro directorio de trabajo sera el folder api
+defaults:
+  run:
+    working-directory: ./api
+# lo que va a hacer github actions
+jobs:
+  unit-test:
+    # preparamos una maquina virtual con la ult version de ubuntu
+    runs-on: ubuntu-latest
+    # los pasos que tiene que seguir github actions
+    steps:
+      # clonar nuestro repositorio
+      - name: Checkout
+        uses: actions/checkout@v2
+      # instalar node con la version especificada
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: 'npm'
+          cache-dependency-path: ./api/package-lock.json
+      # instalar las dependencias en un CI, entorno de integracion continua
+      - name: install
+        shell: bash
+        run: npm ci
+      # correr las pruebas
+      - name: run unit test
+        shell: bash
+        run: npm run test
