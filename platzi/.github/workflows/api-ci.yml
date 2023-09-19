@@ -5,12 +5,13 @@ name: Playwright Tests
 on:
   push:
     paths:
-      - "./../../../platzi/api/**"
-      - "./../../../platzi/.github/workflows/api-ci.yml"
+      # - "./../../../platzi/api/**"
+      - "../../../platzi/api/**"
+      - "../../../platzi/.github/workflows/api-ci.yml"
 # por default nuestro directorio de trabajo sera el folder api
 defaults:
   run:
-    working-directory: ./api
+    working-directory: ../../../platzi/api
 # lo que va a hacer github actions
 jobs:
   unit-test:
@@ -27,7 +28,7 @@ jobs:
         with:
           node-version: 14
           cache: 'npm'
-          cache-dependency-path: ./api/package-lock.json
+          cache-dependency-path: ../../../platzi/api/package-lock.json
       # instalar las dependencias en un CI, entorno de integracion continua
       - name: install
         shell: bash
