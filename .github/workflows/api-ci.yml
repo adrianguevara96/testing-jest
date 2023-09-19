@@ -27,8 +27,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-          cache: 'npm'
-          cache-dependency-path: ./platzi/api/package-lock.json
+          # cache: 'npm'
+          # cache-dependency-path: ./platzi/api/package-lock.json
       # instalar las dependencias en un CI, entorno de integracion continua
       - name: install
         shell: bash
