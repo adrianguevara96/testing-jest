@@ -26,7 +26,7 @@ jobs:
       - name: Setup Nodejs
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 18
           # cache: 'npm'
           # cache-dependency-path: ./platzi/api/package-lock.json
       # instalar las dependencias en un CI, entorno de integracion continua
